@@ -1,7 +1,5 @@
 "use strict";
-const PORT = process.env.PORT || 8080;
-app = express();
-app.set("port", PORT);
+
 const scoreImg = document.querySelector(".userScoreImg");
 const compScoreImg = document.querySelector(".compScoreImg");
 const compCurrentScore = document.querySelector(".current-comp");
@@ -73,13 +71,14 @@ const switchPlayer = function (scores) {
 
   document.querySelector(".score-btn").addEventListener("click", function () {
     if (playing) {
+      botCurrentScore = Math.trunc(Math.random() * 6) + 1;
+
       currentScore = Number(document.querySelector(".user-current").value);
       if (!currentScore || currentScore >= 7 || currentScore < 0) {
         alert("Invalid!! Enter number from the range 1 to 6");
         scores[activePlayer] = scores[activePlayer] - botCurrentScore;
       }
 
-      botCurrentScore = Math.trunc(Math.random() * 6) + 1;
       console.log(botCurrentScore);
       console.log(scores[activePlayer]);
       compCurrentScore.textContent = botCurrentScore;
