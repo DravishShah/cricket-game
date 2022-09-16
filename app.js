@@ -1,10 +1,5 @@
 "use strict";
 
-const PORT = process.env.PORT || 8080;
-app = express();
-app.set("port", PORT);
-
-
 const scoreImg = document.querySelector(".userScoreImg");
 const compScoreImg = document.querySelector(".compScoreImg");
 const compCurrentScore = document.querySelector(".current-comp");
