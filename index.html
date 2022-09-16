@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Cricket Game</title>
+  </head>
+  <body>
+    <main>
+      <section class="player player1 player-active">
+        <p class="batting">Batting Now</p>
+        <h2 class="name" id="name--1">User</h2>
+        <img src="/Images/6.png" alt="1" class="runs userScoreImg" />
+        <div class="current">
+          <input
+            type="number"
+            class="user-current"
+            id="current--0"
+            onfocus="this.value=''"
+          />
+        </div>
+        <div class="final-score">
+          <p class="user-score" id="score--1">100</p>
+        </div>
+      </section>
+
+      <section class="player player2">
+        <p class="batting">Batting Now</p>
+        <h2 class="name" id="name--2">Computer</h2>
+        <img src="/Images/3.png" alt="1" class="runs compScoreImg" />
+        <div class="current-comp">
+          <p class="current-score" id="current--1">0</p>
+        </div>
+        <div class="final-score">
+          <p class="comp-score score-hidden" id="score--2">0</p>
+        </div>
+      </section>
+      <button class="btn score-btn" type="submit">Score</button>
+      <button class="btn btn--new">🔄 New game</button>
+    </main>
+    <div class="container">
+      <div class="inning-status">
+        <p class="inning-score">You are batting first</p>
+        <!-- <img src="./Images/heads.png" style="width: 100px" alt="" /> -->
+      </div>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
