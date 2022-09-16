@@ -58,7 +58,7 @@ const init = function () {
 };
 
 init();
-
+// code for Bot Batting
 const switchPlayer = function (scores) {
   user.classList.toggle("player-active");
   comp.classList.toggle("player-active");
@@ -109,7 +109,7 @@ const switchPlayer = function (scores) {
     }
   });
 };
-
+// Code for User Batting
 document.querySelector(".score-btn").addEventListener("click", function () {
   if (playing && x) {
     currentScore = Number(document.querySelector(".user-current").value);
