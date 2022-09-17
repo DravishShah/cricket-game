@@ -4,15 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Cricket Game</title>
   </head>
   <body>
+    <div class="header header-wrong">
+      <h2>Please select a number from the range of 1 to 6</h2>
+    </div>
     <main>
       <section class="player player1 player-active">
         <p class="batting">Batting Now</p>
         <h2 class="name" id="name--1">User</h2>
-        <img src="/Images/6.png" alt="1" class="runs userScoreImg" />
+        <img src="/Images/wrong.png" alt="1" class="runs userScoreImg" />
         <div class="current">
           <input
             type="number"
@@ -46,6 +49,6 @@
         <!-- <img src="./Images/heads.png" style="width: 100px" alt="" /> -->
       </div>
     </div>
-    <script src="/app.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

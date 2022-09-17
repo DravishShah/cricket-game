@@ -11,6 +11,8 @@ const user = document.querySelector(".player1");
 const comp = document.querySelector(".player2");
 const inningScore = document.querySelector(".inning-score");
 
+const selectNumber = document.querySelector(".header");
+
 //--------------------------------------
 // document.querySelector(".score-btn").addEventListener("click", function () {
 //   const currentScore = Number(document.querySelector(".user-current").value);
@@ -50,7 +52,7 @@ const init = function () {
   playing = true;
   currentScore = 0;
   activePlayer = 0;
-
+  selectNumber.classList.remove("header-wrong");
   compScoreImg.classList.add("hiddenImg");
   scoreImg.classList.add("hiddenImg");
   userScore.textContent = "";
@@ -62,8 +64,10 @@ init();
 const switchPlayer = function (scores) {
   user.classList.toggle("player-active");
   comp.classList.toggle("player-active");
+
   compScore.classList.toggle("score-hidden");
   userScore.classList.toggle("score-hidden");
+
   userScore.textContent = "";
   compCurrentScore.textContent = "";
   activePlayer = 1;
@@ -75,15 +79,18 @@ const switchPlayer = function (scores) {
 
       currentScore = Number(document.querySelector(".user-current").value);
       if (!currentScore || currentScore >= 7 || currentScore < 0) {
-        alert("Invalid!! Enter number from the range 1 to 6");
+        // alert("Invalid!! Enter number from the range 1 to 6");
+        selectNumber.classList.add("header-wrong");
+        scoreImg.src = `./Images/wrong.png`;
         scores[activePlayer] = scores[activePlayer] - botCurrentScore;
+      } else {
+        selectNumber.classList.remove("header-wrong");
+        console.log(botCurrentScore);
+        console.log(scores[activePlayer]);
+        compCurrentScore.textContent = botCurrentScore;
+        compScoreImg.src = `./Images/${botCurrentScore}.png`;
+        scoreImg.src = `./Images/${currentScore}.png`;
       }
-
-      console.log(botCurrentScore);
-      console.log(scores[activePlayer]);
-      compCurrentScore.textContent = botCurrentScore;
-      compScoreImg.src = `./Images/${botCurrentScore}.png`;
-      scoreImg.src = `./Images/${currentScore}.png`;
 
       if (botCurrentScore !== currentScore) {
         if (scores[activePlayer - 1] >= scores[activePlayer]) {
@@ -115,19 +122,23 @@ document.querySelector(".score-btn").addEventListener("click", function () {
     currentScore = Number(document.querySelector(".user-current").value);
     // console.log(currentScore);
     if (!currentScore || currentScore >= 7 || currentScore < 0) {
-      alert("Invalid!! Enter number from the range 1 to 6");
+      scoreImg.classList.remove("hiddenImg");
+      scoreImg.src = `./Images/wrong.png`;
+      // alert("Invalid!! Enter number from the range 1 to 6");
+      selectNumber.classList.add("header-wrong");
       scores[activePlayer] = scores[activePlayer] - currentScore;
+    } else {
+      selectNumber.classList.remove("header-wrong");
+      botCurrentScore = Math.trunc(Math.random() * 6) + 1;
+      // console.log(botCurrentScore);
+      //display Current Score for both
+      compCurrentScore.textContent = botCurrentScore;
+      //display img
+      compScoreImg.classList.remove("hiddenImg");
+      scoreImg.classList.remove("hiddenImg");
+      compScoreImg.src = `./Images/${botCurrentScore}.png`;
+      scoreImg.src = `./Images/${currentScore}.png`;
     }
-
-    botCurrentScore = Math.trunc(Math.random() * 6) + 1;
-    // console.log(botCurrentScore);
-    //display Current Score for both
-    compCurrentScore.textContent = botCurrentScore;
-    //display img
-    compScoreImg.classList.remove("hiddenImg");
-    scoreImg.classList.remove("hiddenImg");
-    compScoreImg.src = `./Images/${botCurrentScore}.png`;
-    scoreImg.src = `./Images/${currentScore}.png`;
 
     if (botCurrentScore !== currentScore) {
       scores[activePlayer] = scores[activePlayer] + currentScore;
